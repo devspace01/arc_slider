@@ -16,7 +16,7 @@
     "react-native": "0.72.3",
     "react-native-circular-slider": "^1.0.1",
     "react-native-gesture-handler": "^2.12.1",
-    "react-native-radial-slider": "^1.0.0",
+    "react-native-radial-slider": "https://github.com/devspace01/react-native-radial-slider",
     "react-native-reanimated": "^3.4.1",
     "react-native-redash": "^18.1.0",
     "react-native-slider": "^0.11.0",
