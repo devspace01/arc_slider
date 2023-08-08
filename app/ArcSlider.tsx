@@ -59,21 +59,28 @@ interface SliderDotsProps {
   setSliderValue: (value: number) => void;
 }
 
-const SliderDotsComponent: React.FC<SliderDotsProps> = ({
+const SliderDotsComponent = ({
   sliderValue,
   setSliderValue,
-}) => {
+}: SliderDotsProps) => {
   return (
-    <View>
+    <>
       {SLIDER_DOTS.map((style, index) => {
         const sliderStepValue = (index + 1) * 20;
         const isActive = sliderValue > sliderStepValue;
-        const isNearby =
-          !Number.isInteger(sliderValue) &&
-          Math.abs(sliderValue - sliderStepValue) <= 5;
+        const isSliderStepValue =
+          parseInt(String(sliderValue)) === sliderStepValue;
+        const isNearbyValue =
+          sliderValue > sliderStepValue - 5 &&
+          sliderValue < sliderStepValue + 5;
 
         const backgroundColor = isActive ? COLORS.themeBlur : COLORS.white;
-        const zIndex = isNearby ? 0 : 9999;
+        const zIndex =
+          !Number.isInteger(sliderValue) && isSliderStepValue
+            ? 9999
+            : isNearbyValue
+            ? 0
+            : 9999;
         return (
           <TouchableOpacity
             key={index}
@@ -89,7 +96,7 @@ const SliderDotsComponent: React.FC<SliderDotsProps> = ({
           />
         );
       })}
-    </View>
+    </>
   );
 };
 
